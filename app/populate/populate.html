@@ -12,7 +12,7 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
 
     <title>L'ultima Cena Pizzeria! - Create order</title>
   </head>
@@ -23,7 +23,7 @@
     <header class="header-section container-fluid">
       <nav class="navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="/">
-          <img src="images/image4.png" width="50" height="50" class="d-inline-block align-top" alt="" />
+          <img src="../../images/image4.png" width="50" height="50" class="d-inline-block align-top" alt="" />
           L'ultima Cena
         </a>
         <ul class="navbar-nav mr-auto"></ul>
@@ -57,6 +57,7 @@
 
     <!-- FORM PART -->
 
+
     <div class="container">
       <!-- Notification Area -->
 
@@ -66,59 +67,40 @@
       </div>
 
       <div class="jumbotron">
-        <h2 class="text-center">Build your own pizza!</h2>
-
+        <h2 class="text-center">Populate the Database!</h2>
         <form id="order-form">
-          <!-- CLIENT DATA -->
-
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Name: </label>
-            <div class="col-sm-10">
-              <input required name="name" type="text" class="form-control" placeholder="Name" />
+            <div class="text-center">
+                <button type="submit" class="btn btn-warning btn-lg">Fill the DB</button>
             </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label">DNI: </label>
-            <div class="col-sm-10">
-              <input required name="dni" maxlength="10" type="text" class="form-control" placeholder="DNI" />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Address: </label>
-            <div class="col-sm-10">
-              <input required name="address" type="text" class="form-control" placeholder="Address" />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Phone #: </label>
-            <div class="col-sm-10">
-              <input required name="phone" type="text" class="form-control" placeholder="Phone" />
-            </div>
-          </div>
-
-          <hr />
-
+            <hr />
           <!-- SIZE AND INGREDIENTS -->
 
           <table class="table bg-white table-bordered">
             <thead class="thead-dark">
               <tr>
-                <th class="w-25">Choose a size</th>
-                <th class="w-25">Choose your ingredients</th>
-                <th class="w-25">Choose your beverages</th>
+                <th class="w-25">Orders</th>
+                <th class="w-25">Sizes</th>
+                <th class="w-25">Ingredients</th>
+                <th class="w-25">Beverages</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
+                    <table id="orders">
+                      <template id="order-item-template">
+                        <div>
+                          <label> {{client_name}} - {{client_dni}} - {{client_address}} - {{client_phone}} - {{date}}</label>
+                        </div>
+                      </template>
+                      <tbody></tbody>
+                    </table>
+                  </td>
+                <td>
                   <table id="sizes">
                     <template id="sizes-template">
-                      <div class="form-check">
-                        <input value="{{_id}}" required name="size" class="form-check-input" type="radio" />
-                        <label class="form-check-label" for="exampleRadios1"> {{name}} - ${{price}} </label>
+                      <div>
+                        <label> {{_id}} - {{name}} - ${{price}} </label>
                       </div>
                     </template>
                     <tbody></tbody>
@@ -127,9 +109,8 @@
                 <td>
                   <table id="ingredients">
                     <template id="ingredients-template">
-                      <div class="form-check">
-                        <input name="ingredients" value="{{_id}}" class="form-check-input" type="checkbox" />
-                        <label class="form-check-label" for="defaultCheck1"> {{name}} - ${{price}} </label>
+                      <div>
+                        <label> {{_id}} - {{name}} - ${{price}} </label>
                       </div>
                     </template>
                     <tbody></tbody>
@@ -139,8 +120,7 @@
                   <table id="beverages">
                     <template id="beverages-template">
                       <div class="form-check">
-                        <input name="beverages" value="{{_id}}" class="form-check-input" type="checkbox" />
-                        <label class="form-check-label" for="defaultCheck1"> {{name}} - ${{price}} </label>
+                        <label class="form-check-label" for="defaultCheck1"> {{_id}} - {{name}} - ${{price}} </label>
                       </div>
                     </template>
                     <tbody></tbody>
@@ -149,15 +129,6 @@
               </tr>
             </tbody>
           </table>
-
-          <!-- ORDER BUTTON -->
-
-          <div class="text-center">
-            <button type="submit" class="btn btn-warning btn-lg">Order</button>
-          </div>
-        </form>
-      </div>
-    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -183,6 +154,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="js/index.js"></script>
+    <script type="module" src="../../js/populate/popoulate.js"></script>
   </body>
 </html>
